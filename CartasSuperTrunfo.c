@@ -1,109 +1,105 @@
 #include <stdio.h>
 
 int main() {
-    // Variáveis para a primeira carta: Campinas (A01)
-    char codigo1[4];  // Código: "A01"
-    int populacao1;   // 1139000
-    float area1;      // 794.95
-    float pib1;       // 40000000000
-    int pontos_turisticos1;  // 10
+    // Declaração das variáveis para Carta 1
+    char estado1;
+    char codigo1[4];
+    char nome1[50];
+    unsigned long int populacao1;
+    float area1;
+    float pib1;
+    int pontos_turisticos1;
 
-    // Variáveis para a segunda carta: São Carlos (B02)
-    char codigo2[4];  // Código: "B02"
-    int populacao2;   // 254000
-    float area2;      // 1136.91
-    float pib2;       // 14500000000
-    int pontos_turisticos2;  // 6
+    // Declaração das variáveis para Carta 2
+    char estado2;
+    char codigo2[4];
+    char nome2[50];
+    unsigned long int populacao2;
+    float area2;
+    float pib2;
+    int pontos_turisticos2;
 
-    // Variáveis para a terceira carta: Moscou (C03)
-    char codigo3[4];  // Código: "C03"
-    int populacao3;   // 13258000
-    float area3;      // 2511.00
-    float pib3;       // 1000000000000
-    int pontos_turisticos3;  // 15
-
-    // Variáveis para a quarta carta: Kazan (D04)
-    char codigo4[4];  // Código: "D04"
-    int populacao4;   // 1308000
-    float area4;      // 425.00
-    float pib4;       // 870000000000
-    int pontos_turisticos4;  // 8
-
-    // Cadastro da primeira carta: Campinas
-    printf("Digite o código da carta de Campinas (A01): ");
+    // Entrada de dados para Carta 1
+    printf("Digite os dados da Carta 1:\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado1);
+    printf("Código (ex: A01): ");
     scanf("%s", codigo1);
-    printf("Digite a população de Campinas (1139000): ");
-    scanf("%d", &populacao1);
-    printf("Digite a área de Campinas em km² (794.95): ");
+    printf("Nome da Cidade: ");
+    scanf(" %[^\n]s", nome1); // Lê string com espaços
+    printf("População: ");
+    scanf("%lu", &populacao1);
+    printf("Área (km²): ");
     scanf("%f", &area1);
-    printf("Digite o PIB de Campinas em reais (40000000000): ");
+    printf("PIB (bilhões de reais): ");
     scanf("%f", &pib1);
-    printf("Digite o número de pontos turísticos de Campinas (10): ");
+    printf("Número de Pontos Turísticos: ");
     scanf("%d", &pontos_turisticos1);
 
-    // Cadastro da segunda carta: São Carlos
-    printf("Digite o código da carta de São Carlos (B02): ");
+    // Entrada de dados para Carta 2
+    printf("\nDigite os dados da Carta 2:\n");
+    printf("Estado (A-H): ");
+    scanf(" %c", &estado2);
+    printf("Código (ex: A01): ");
     scanf("%s", codigo2);
-    printf("Digite a população de São Carlos (254000): ");
-    scanf("%d", &populacao2);
-    printf("Digite a área de São Carlos em km² (1136.91): ");
+    printf("Nome da Cidade: ");
+    scanf(" %[^\n]s", nome2); // Lê string com espaços
+    printf("População: ");
+    scanf("%lu", &populacao2);
+    printf("Área (km²): ");
     scanf("%f", &area2);
-    printf("Digite o PIB de São Carlos em reais (14500000000): ");
+    printf("PIB (bilhões de reais): ");
     scanf("%f", &pib2);
-    printf("Digite o número de pontos turísticos de São Carlos (6): ");
+    printf("Número de Pontos Turísticos: ");
     scanf("%d", &pontos_turisticos2);
 
-    // Cadastro da terceira carta: Moscou
-    printf("Digite o código da carta de Moscou (C03): ");
-    scanf("%s", codigo3);
-    printf("Digite a população de Moscou (13258000): ");
-    scanf("%d", &populacao3);
-    printf("Digite a área de Moscou em km² (2511.00): ");
-    scanf("%f", &area3);
-    printf("Digite o PIB de Moscou em dólares (1000000000000): ");
-    scanf("%f", &pib3);
-    printf("Digite o número de pontos turísticos de Moscou (15): ");
-    scanf("%d", &pontos_turisticos3);
+    // Cálculos para Carta 1
+    float densidade1 = (float)populacao1 / area1;
+    float pib_per_capita1 = pib1 * 1000000000 / populacao1; // Convertendo bilhões para reais
+    float super_poder1 = (float)populacao1 + area1 + pib1 + pontos_turisticos1 + 
+                         pib_per_capita1 + (1.0 / densidade1); // Inverso da densidade
 
-    // Cadastro da quarta carta: Kazan
-    printf("Digite o código da carta de Kazan (D04): ");
-    scanf("%s", codigo4);
-    printf("Digite a população de Kazan (1308000): ");
-    scanf("%d", &populacao4);
-    printf("Digite a área de Kazan em km² (425.00): ");
-    scanf("%f", &area4);
-    printf("Digite o PIB de Kazan em rublos (870000000000): ");
-    scanf("%f", &pib4);
-    printf("Digite o número de pontos turísticos de Kazan (8): ");
-    scanf("%d", &pontos_turisticos4);
+    // Cálculos para Carta 2
+    float densidade2 = (float)populacao2 / area2;
+    float pib_per_capita2 = pib2 * 1000000000 / populacao2; // Convertendo bilhões para reais
+    float super_poder2 = (float)populacao2 + area2 + pib2 + pontos_turisticos2 + 
+                         pib_per_capita2 + (1.0 / densidade2); // Inverso da densidade
 
-    // Exibição dos dados da primeira carta: Campinas
-    printf("\nDados da carta de Campinas (%s):\n", codigo1);
-    printf("População: %d\n", populacao1);
-    printf("Área: %.2f\n", area1);
-    printf("PIB: %.2f\n", pib1);
-    printf("Pontos turísticos: %d\n", pontos_turisticos1);
+    // Exibição dos dados de Carta 1
+    printf("\nCarta 1:\n");
+    printf("Estado: %c\n", estado1);
+    printf("Código: %s\n", codigo1);
+    printf("Nome da Cidade: %s\n", nome1);
+    printf("População: %lu\n", populacao1);
+    printf("Área: %.2f km²\n", area1);
+    printf("PIB: %.2f bilhões de reais\n", pib1);
+    printf("Número de Pontos Turísticos: %d\n", pontos_turisticos1);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade1);
+    printf("PIB per Capita: %.2f reais\n", pib_per_capita1);
+    printf("Super Poder: %.2f\n\n", super_poder1);
 
-    // Exibição dos dados da segunda carta: São Carlos
-    printf("\nDados da carta de São Carlos (%s):\n", codigo2);
-    printf("População: %d\n", populacao2);
-    printf("Área: %.2f\n", area2);
-    printf("PIB: %.2f\n", pib2);
-    printf("Pontos turísticos: %d\n", pontos_turisticos2);
+    // Exibição dos dados de Carta 2
+    printf("Carta 2:\n");
+    printf("Estado: %c\n", estado2);
+    printf("Código: %s\n", codigo2);
+    printf("Nome da Cidade: %s\n", nome2);
+    printf("População: %lu\n", populacao2);
+    printf("Área: %.2f km²\n", area2);
+    printf("PIB: %.2f bilhões de reais\n", pib2);
+    printf("Número de Pontos Turísticos: %d\n", pontos_turisticos2);
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade2);
+    printf("PIB per Capita: %.2f reais\n", pib_per_capita2);
+    printf("Super Poder: %.2f\n\n", super_poder2);
 
-    // Exibição dos dados da terceira carta: Moscou
-    printf("\nDados da carta de Moscou (%s):\n", codigo3);
-    printf("População: %d\n", populacao3);
-    printf("Área: %.2f\n", area3);
-    printf("PIB: %.2f\n", pib3);
-    printf("Pontos turísticos: %d\n", pontos_turisticos3);
-
-    // Exibição dos dados da quarta carta: Kazan
-    printf("\nDados da carta de Kazan (%s):\n", codigo4);
-    printf("População: %d\n", populacao4);
-    printf("Área: %.2f\n", area4);
-    printf("PIB: %.2f\n", pib4);
-    printf("Pontos turísticos: %d\n", pontos_turisticos4);
+    // Comparação entre Carta 1 e Carta 2
+    printf("Comparação de Cartas:\n");
+    printf("População: Carta %d venceu (%d)\n", (populacao1 > populacao2) ? 1 : 2, (populacao1 > populacao2));
+    printf("Área: Carta %d venceu (%d)\n", (area1 > area2) ? 1 : 2, (area1 > area2));
+    printf("PIB: Carta %d venceu (%d)\n", (pib1 > pib2) ? 1 : 2, (pib1 > pib2));
+    printf("Pontos Turísticos: Carta %d venceu (%d)\n", (pontos_turisticos1 > pontos_turisticos2) ? 1 : 2, (pontos_turisticos1 > pontos_turisticos2));
+    printf("Densidade Populacional: Carta %d venceu (%d)\n", (densidade1 < densidade2) ? 1 : 2, (densidade1 < densidade2));
+    printf("PIB per Capita: Carta %d venceu (%d)\n", (pib_per_capita1 > pib_per_capita2) ? 1 : 2, (pib_per_capita1 > pib_per_capita2));
+    printf("Super Poder: Carta %d venceu (%d)\n", (super_poder1 > super_poder2) ? 1 : 2, (super_poder1 > super_poder2));
 
     return 0;
 }
